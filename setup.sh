@@ -34,14 +34,6 @@ gpasswd -a $NAME bumblebee
 #Install soft
 pacman -S firefox telegram-desktop discord
 
-#Try to install pikaur
-pacman -S --needed base-devel
-git clone https://aur.archlinux.org/pikaur.git
-cd pikaur
-makepkg -fsri
-
-#Try to install applets
-pikaur -S budgie-calendar-applet budgie-network-applet
-
-#Restart system
-reboot
+#Script install pikaur
+cp pikaur.sh /home/$NAME
+su $NAME | bash /home/$NAME/pikaur.sh
