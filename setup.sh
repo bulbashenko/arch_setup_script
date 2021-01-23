@@ -5,12 +5,13 @@ read NAME
 
 #Install sudo && add user
 echo 'y' | pacman -S sudo
-useradd -m $NAME
+groupadd $NAME
+useradd -g $NAME -m $NAME
 passwd $NAME
 echo "$NAME ALL=(ALL) ALL" | EDITOR='tee -a' visudo
 
 #Install budgie
-pacman -S budgie-desktop gnome gdm
+pacman -S budgie-desktop gnome gdm dnsmasq
 systemctl enable NetworkManager
 rm /etc/gdm/custom.conf
 cp custom.conf /etc/gdm/
@@ -26,14 +27,5 @@ pacman -S ttf-ubuntu-font-family
 pacman -S pulseaudio alsa
 cp daemon.conf ~/.config/pulse/
 
-#Install nvidia
-pacman -S nvidia nvidia-settings bumblebee mesa-demos
-systemctl enable bumblebeed
-gpasswd -a $NAME bumblebee
-
-#Install soft
+#Install apps
 pacman -S firefox telegram-desktop discord
-
-#Script install pikaur
-cp pikaur.sh /home/$NAME
-su $NAME | bash /home/$NAME/pikaur.sh
