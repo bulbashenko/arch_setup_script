@@ -46,8 +46,10 @@ pacman -S firefox telegram-desktop discord
 #Try to install pikaur
 pacman -S --needed base-devel
 git clone https://aur.archlinux.org/pikaur.git
-cp pikaur/ /home/$NAME/
-chown -R $NAME:$NAME /home/$NAME/pikaur/
+chown -R $NAME:$NAME pikaur/
+cd pikaur/
+sudo -u $NAME makepkg -fsri
 
-echo "If you want install pikaur, just login in your user, go to pikaur folder and use 'makepkg -fsri'!"
+#Install budige applet
+sudo -u $NAME pikaur -S budgie-network-applet
 
