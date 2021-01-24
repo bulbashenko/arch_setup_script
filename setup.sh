@@ -19,13 +19,16 @@ passwd $NAME
 echo "$NAME ALL=(ALL) ALL" | EDITOR='tee -a' visudo
 
 #Install budgie && drivers
-pacman -S budgie-desktop gnome gdm dnsmasq nvidia nvdia-settings bumblebee
-gpasswd -a $NAME bumblebee
+pacman -S budgie-desktop gnome gdm dnsmasq
 systemctl enable NetworkManager
-systemctl enable bumblebeed
 rm /etc/gdm/custom.conf
 cp custom.conf /etc/gdm/
 systemctl enable gdm
+
+#Install nvidia
+pacman -S nvidia nvidia-settings bumblebee primus
+gpasswd -a $NAME bumblebee
+systemctl enable bumblebeed
 
 #Install theme
 pacman -S arc-gtk-theme papirus-icon-theme
@@ -45,6 +48,6 @@ pacman -S --needed base-devel
 git clone https://aur.archlinux.org/pikaur.git
 chown -R $NAME:$NAME pikaur/
 cp -r pikaur/ /home/$NAME
-cd pikaur
-makepkg -fsri
+
+echo "If you want install pikaur, just login in your user, go to pikaur folder and use 'makepkg -fsri'!"
 
