@@ -8,8 +8,6 @@ echo "github username: "
 read gitUser
 echo "github email: "
 read gitEmail
-git config --global user.email "$gitEmail"
-git config --global user.name "$gitUser"
 
 #Install sudo && add user
 echo 'y' | pacman -S sudo
@@ -17,6 +15,8 @@ groupadd $NAME
 useradd -g $NAME -m $NAME
 passwd $NAME
 echo "$NAME ALL=(ALL) ALL" | EDITOR='tee -a' visudo
+sudo -u $NAME git config --global user.email "$gitEmail"
+sudo -u $NAME git config --global user.name "$gitUser"
 
 #Install budgie && drivers
 pacman -S budgie-desktop gnome gdm dnsmasq
