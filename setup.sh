@@ -21,14 +21,10 @@ sudo -u $NAME git config --global user.name "$gitUser"
 #Install budgie && drivers
 pacman -S budgie-desktop gnome gdm dnsmasq
 systemctl enable NetworkManager
-rm /etc/gdm/custom.conf
-cp custom.conf /etc/gdm/
 systemctl enable gdm
 
 #Install nvidia
-pacman -S nvidia nvidia-settings bumblebee primus
-gpasswd -a $NAME bumblebee
-systemctl enable bumblebeed
+pacman -S nvidia nvidia-settings
 
 #Install theme
 pacman -S arc-gtk-theme papirus-icon-theme
@@ -51,6 +47,7 @@ cd /home/$NAME/pikaur
 chown -R $NAME:$NAME /home/$NAME/pikaur/
 sudo -u $NAME makepkg -fsri
 
-#Install budige applet
+#Install applets
 sudo -u $NAME pikaur -S budgie-network-applet
+sudo -u $NAME pikaur -S optimus-manager-qt
 
