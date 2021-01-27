@@ -15,13 +15,10 @@ groupadd $NAME
 useradd -g $NAME -m $NAME
 passwd $NAME
 echo "$NAME ALL=(ALL) ALL" | EDITOR='tee -a' visudo
-sudo -u $NAME git config --global user.email "$gitEmail"
-sudo -u $NAME git config --global user.name "$gitUser"
 
 #Install budgie && drivers
-pacman -S budgie-desktop gnome gdm dnsmasq
+pacman -S budgie-desktop gnome dnsmasq
 systemctl enable NetworkManager
-systemctl enable gdm
 
 #Install nvidia
 pacman -S nvidia nvidia-settings
@@ -50,4 +47,15 @@ sudo -u $NAME makepkg -fsri
 #Install applets
 sudo -u $NAME pikaur -S budgie-network-applet
 sudo -u $NAME pikaur -S optimus-manager-qt
+sudo -u $NAME pikaur -S gdm-prime
+systemctl enable gdm
+
+#Some features
+cd ~/arch_setp_script
+cp wallpaper.jpg /home/$NAME
+chown -R $NAME:$NAME /home/$NAME/wallpaper.jpg
+
+#Add git
+sudo -u $NAME git config --global user.name "$gitUser"
+sudo -u $NAME git config --global user.email "$gitEmail"
 
