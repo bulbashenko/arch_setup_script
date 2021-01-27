@@ -51,7 +51,7 @@ sudo -u $NAME pikaur -S gdm-prime
 systemctl enable gdm
 
 #Some features
-cd ~/arch_setp_script
+cd ~/arch_setup_script
 cp wallpaper.jpg /home/$NAME
 chown -R $NAME:$NAME /home/$NAME/wallpaper.jpg
 
