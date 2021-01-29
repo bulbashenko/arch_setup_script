@@ -16,12 +16,12 @@ useradd -g $NAME -m $NAME
 passwd $NAME
 echo "$NAME ALL=(ALL) ALL" | EDITOR='tee -a' visudo
 
-#Install budgie && drivers
+#Install budgie
 pacman -S budgie-desktop gnome dnsmasq
 systemctl enable NetworkManager
 
 #Install nvidia
-pacman -S nvidia nvidia-settings
+pacman -S nvidia nvidia-settings nvidia-prime 
 
 #Install theme
 pacman -S arc-gtk-theme papirus-icon-theme
@@ -46,8 +46,6 @@ sudo -u $NAME makepkg -fsri
 
 #Install applets
 sudo -u $NAME pikaur -S budgie-network-applet
-sudo -u $NAME pikaur -S optimus-manager-qt
-sudo -u $NAME pikaur -S gdm-prime
 systemctl enable gdm
 
 #Some features
