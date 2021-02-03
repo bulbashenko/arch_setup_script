@@ -23,7 +23,7 @@ pikaur -S pulseaudio
 cp daemon.conf /home/$NAME/.config/pulse/daemon.conf
 
 #Install budgie
-pikaur -S xorg xorg-server budgie-desktop-git gnome-terminal gdm
+pikaur -S xorg xorg-server budgie-desktop-git gnome mc
 echo 'y' | pikaur -S arc-gtk-theme papirus-icon-theme
 pikaur -S budgie-network-applet
 systemctl enable NetworkManager
@@ -34,6 +34,5 @@ pikaur -S discord telegram-desktop firefox
 
 #Some features
 cd ~/arch_setup_script
-cp -r Wallpapers/ /home/$NAME/Pictures
-chown -R $NAME:$NAME /home/$NAME/Pictures/Wallpapers
-
+cp -r Wallpapers/ /home/$NAME
+chown -R $NAME:$NAME /home/$NAME/Wallpapers
