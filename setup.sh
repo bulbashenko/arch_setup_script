@@ -40,3 +40,4 @@ cd ~/arch_setup_script
 cp -r Wallpapers/ /home/$NAME
 chown -R $NAME:$NAME /home/$NAME/Wallpapers
 cp cooling /bin
+chown -R $NAME:$NAME /bin/cooling
