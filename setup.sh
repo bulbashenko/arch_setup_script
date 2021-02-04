@@ -23,11 +23,14 @@ pikaur -S pulseaudio
 cp daemon.conf /home/$NAME/.config/pulse/daemon.conf
 
 #Install budgie
-pikaur -S xorg xorg-server budgie-desktop-git gnome mc
+pikaur -S xorg xorg-server budgie-desktop-git gnome mc gnome-screensaver
 echo 'y' | pikaur -S arc-gtk-theme papirus-icon-theme
 pikaur -S budgie-network-applet
 systemctl enable NetworkManager
 systemctl enable gdm
+
+#Install nvidia
+pikaur -S nvidia nvidia-settings nvidia-prime
 
 #Install apps
 pikaur -S discord telegram-desktop firefox
