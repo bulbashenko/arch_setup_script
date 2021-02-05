@@ -24,7 +24,6 @@ cp daemon.conf /home/$NAME/.config/pulse/daemon.conf
 
 #Install budgie
 pikaur -S xorg xorg-server budgie-desktop-git gnome mc gnome-screensaver lightdm lightdm-slick-greeter
-pikaur -S gnome-terminal-transparency
 pikaur -S plata-theme papirus-icon-theme
 pikaur -S budgie-network-applet budgie-screenshot-applet
 systemctl enable NetworkManager
