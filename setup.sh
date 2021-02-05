@@ -34,7 +34,7 @@ systemctl enable lightdm
 pikaur -S nvidia nvidia-settings nvidia-prime
 
 #Install apps
-pikaur -S discord telegram-desktop firefox
+pikaur -S discord telegram-desktop firefox skypeforlinux-stable-bin spotify spotify-adkiller-git
 
 #Some features
 cd ~/arch_setup_script
