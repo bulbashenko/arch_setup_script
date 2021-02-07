@@ -20,25 +20,26 @@ sudo -u $NAME makepkg -fsri
 
 #Install audio
 pikaur -S pulseaudio
-cp daemon.conf /home/$NAME/.config/pulse/daemon.conf
+mkdir /home/$NAME/.config/pulse
+cp daemon.conf /home/$NAME/.config/pulse
 
 #Install budgie
-pikaur -S xorg xorg-server budgie-desktop-git gnome mc gnome-screensaver lightdm lightdm-slick-greeter
+pikaur -S xorg xorg-server budgie-desktop gnome-settings-daemon gnome-control-center gnome-screensaver lightdm lightdm-gtk-greeter
 pikaur -S gnome-terminal-transparency
 pikaur -S plata-theme papirus-icon-theme
 pikaur -S budgie-network-applet budgie-screenshot-applet
-systemctl enable NetworkManager
 systemctl enable lightdm
 
 #Install nvidia
 pikaur -S nvidia nvidia-settings nvidia-prime
 
 #Install apps
-pikaur -S discord telegram-desktop firefox skypeforlinux-stable-bin spotify spotify-adkiller-git
+pikaur -S discord telegram-desktop firefox skypeforlinux-stable-bin mc
 
 #Some features
 cd ~/arch_setup_script
-cp -r Wallpapers/ /home/$NAME
-chown -R $NAME:$NAME /home/$NAME/Wallpapers
+mkdir /home/$NAME/Pictures
+cp -r Wallpapers/ /home/$NAME/Pictures
+chown -R $NAME:$NAME /home/$NAME/Pictures/Wallpapers
 cp cooling /bin
 chown -R $NAME:$NAME /bin/cooling
