@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu:style=Regular, Noto:style=Emoji 8 
+font pango:Noto Sans 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -25,7 +25,6 @@ font pango:Ubuntu:style=Regular, Noto:style=Emoji 8
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -48,7 +47,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show run 
+bindsym $mod+d exec --no-startup-id rofi -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -178,33 +177,41 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-	position top
-}
 
+# -----------------------------------------------------------------------------
 
-# -------------------------------------------------------
-
-#Custom startups
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id nm-applet
-exec --no-startup-id setxkbmap us,ru -option grp:win_space_toggle
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id flameshot
-exec --no-startup-id telegram-desktop
-exec --no-startup-id discord
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #Custom shortcuts
 bindsym $mod+F1 exec --no-startup-id google-chrome-stable
-bindsym Print exec --no-startup-id flameshot gui
-bindsym $mod+F6 exec ~/.config/i3/touchpad.sh
 
-new_window normal 0 px
+#Custom startups
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id setxkbmap us,ru -option grp:win_space_toggle
+exec --no-startup-id discord
+exec --no-startup-id telegram-desktop
+
 for_window [class="Google-chrome" title="Google Chrome"] border none
+new_window normal 0 px
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #25469d #25469d #ffffff #2e9ef4   #285577
-client.unfocused        #4d4d4d #4d4d4d #000000 #292d2e   #222222
-# --------------------------------------------------------
+# panel
+bar {
+        position top
+        colors {
+        background #0d1014
+        statusline #2f343f
+        separator #4b5262
+        
+         # colour of border, background, and text
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspacei       #2f343f #ebcb8b #2f343f
+    }
+        status_command i3status
+}
 
+# colour of border, background, text, indicator, and child_border
+client.focused              #273747 #273747 #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #1b2733 #1b2733 #d8dee8 #2f343f #2f343f
+client.unfocused            #1b2733 #1b2733 #d8dee8 #2f343f #2f343f
+
+# -----------------------------------------------------------------------------
